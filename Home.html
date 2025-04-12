@@ -24,7 +24,7 @@
       }
 
       h1 {
-        color: #ff66b2;
+        color: #00a2ff;
         font-size: 48px;
         margin-bottom: 20px;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -50,7 +50,7 @@
         height: 100%;
         object-fit: cover;
         border-radius: 50%;
-        border: 5px solid #ff66b2;
+        border: 5px solid #00a2ff;
         opacity: 0;
         transform: scale(0) rotate(-360deg);
         animation: photoAppear 1.5s forwards 1s;
@@ -96,7 +96,7 @@
       }
 
       button {
-        background-color: #ff66b2;
+        background-color: #00a2ff;
         color: white;
         border: none;
         padding: 10px 20px;
@@ -109,7 +109,7 @@
 
       button:hover {
         transform: scale(1.1);
-        background-color: #ff3399;
+        background-color: #00a2ff;
       }
 
       .message {
@@ -166,7 +166,7 @@
 
       @keyframes rainbow {
         0% {
-          color: #ff66b2;
+          color: #00a2ff;
         }
         14% {
           color: #ff6666;
@@ -187,7 +187,7 @@
           color: #6666ff;
         }
         100% {
-          color: #ff66b2;
+          color: #00a2ff;
         }
       }
     </style>
@@ -205,16 +205,21 @@
         <img class="photo" src="foto1.jpg" alt="Foto Ulang Tahun" />
       </div>
       <div class="message">
-        happy birthday pari semoga panjang umur dan panjang semuanya.
+        Semoga di hari spesialmu ini, kamu mendapatkan kebahagiaan, kesehatan,
+        dan kesuksesan. Terima kasih telah menjadi orang yang luar biasa!
       </div>
       <button onclick="playMusic()">Putar Musik! 🎵</button>
+      <audio id="birthdaySong" loop>
+        <source src="birthday-song.mp3" type="audio/mpeg" />
+        Browser Anda tidak mendukung elemen audio.
+      </audio>
     </div>
 
     <script>
       // Membuat efek confetti
       function createConfetti() {
         const colors = [
-          "#ff66b2",
+          "#00a2ff",
           "#66ffff",
           "#66ff66",
           "#ffff66",
@@ -233,9 +238,17 @@
         }
       }
 
-      // Memutar musik ulang tahun sederhana (simulasi)
+      // Memutar musik ulang tahun
       function playMusic() {
-        alert("🎵 Selamat ulang tahun... Selamat ulang tahun... 🎵");
+        const audio = document.getElementById("birthdaySong");
+
+        if (audio.paused) {
+          audio.play();
+          document.querySelector("button").textContent = "Jeda Musik! ⏸️";
+        } else {
+          audio.pause();
+          document.querySelector("button").textContent = "Putar Musik! 🎵";
+        }
         createConfetti();
       }
 
